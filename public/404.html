@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050816" />
+    <title>Page not found | RAR Consultant</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #050816;
+        color: #fff;
+        font:
+          16px Inter,
+          Arial,
+          sans-serif;
+        text-align: center;
+        padding: 24px;
+      }
+      main {
+        max-width: 34rem;
+        padding: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 1.5rem;
+        background: rgba(10, 15, 46, 0.82);
+      }
+      h1 {
+        font:
+          700 clamp(2.4rem, 8vw, 4rem) Poppins,
+          Arial,
+          sans-serif;
+        letter-spacing: -0.05em;
+        margin: 0.2em 0;
+      }
+      p {
+        color: #a8b0d3;
+        line-height: 1.7;
+      }
+      .arc {
+        width: 5rem;
+        height: 0.2rem;
+        margin: 1rem auto;
+        background: #ff1a1a;
+        border-radius: 99px;
+        transform: rotate(-8deg);
+      }
+      a {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 0.8rem 1.1rem;
+        color: #fff;
+        background: #ff1a1a;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="arc" aria-hidden="true"></div>
+      <p>RAR CONSULTANT</p>
+      <h1>Page not found</h1>
+      <p>We couldn’t find that page. Taking you back to the requested route…</p>
+      <a href="__RAR_BASE_PATH__">Return to RAR Consultant</a>
+    </main>
+    <script>
+      (() => {
+        const base = '__RAR_BASE_PATH__';
+        const root = base === '/' ? '' : base.replace(/\/$/, '');
+        const requested = window.location.pathname + window.location.search + window.location.hash;
+        const target = `${root}/?p=${encodeURIComponent(requested)}`;
+        window.location.replace(target);
+      })();
+    </script>
+  </body>
+</html>

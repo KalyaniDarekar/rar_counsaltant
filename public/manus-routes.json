@@ -1,0 +1,10 @@
+{
+  "routes": [
+    { "path": "/", "title": "Home" },
+    { "path": "/about", "title": "About Us" },
+    { "path": "/services", "title": "Services" },
+    { "path": "/contact", "title": "Contact Us" },
+    { "path": "/privacy-policy", "title": "Privacy Policy" },
+    { "path": "/terms-and-conditions", "title": "Terms and Conditions" }
+  ]
+}

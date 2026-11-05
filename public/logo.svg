@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="500" viewBox="0 0 1024 500" role="img" aria-labelledby="title desc">
+  <title id="title">RAR Consultant</title>
+  <desc id="desc">White bold RAR lettering with an arched red swoosh curving overhead and red tracked CONSULTANT below on a royal-blue field.</desc>
+  <rect width="1024" height="500" rx="36" fill="#010193"/>
+  <!-- Overarching Red Swoosh -->
+  <path d="M 384 162 C 500 55, 750 45, 850 180 C 876 215, 860 255, 776 288 C 840 236, 848 180, 784 130 C 690 60, 480 80, 384 162 Z" fill="#E50F1B"/>
+  <!-- RAR Letters -->
+  <text x="482" y="306" fill="#ffffff" text-anchor="middle" font-family="Poppins, Montserrat, Arial, sans-serif" font-size="250" font-weight="900" letter-spacing="-5">RAR</text>
+  <!-- CONSULTANT Tracking -->
+  <text x="506" y="380" fill="#E50F1B" text-anchor="middle" font-family="Poppins, Montserrat, Arial, sans-serif" font-size="46" font-weight="800" letter-spacing="16">CONSULTANT</text>
+</svg>

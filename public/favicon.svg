@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <rect width="128" height="128" rx="28" fill="#010193"/>
+  <path d="M 44 48 C 60 22, 98 22, 114 48 C 118 56, 116 66, 104 78 C 112 65, 110 52, 98 42 C 84 32, 58 35, 44 48 Z" fill="#E50F1B"/>
+  <text x="64" y="82" text-anchor="middle" fill="#ffffff" font-family="Poppins, Montserrat, Arial, sans-serif" font-size="44" font-weight="900" letter-spacing="-3">RAR</text>
+  <text x="64" y="104" text-anchor="middle" fill="#E50F1B" font-family="Poppins, Montserrat, Arial, sans-serif" font-size="10" font-weight="800" letter-spacing="3">CONSULTANT</text>
+</svg>
