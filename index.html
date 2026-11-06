@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="cyan">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#050816" />
+    <meta name="theme-color" content="#060b14" />
     <meta name="color-scheme" content="dark" />
     <meta name="application-name" content="RAR Consultant" />
     <link rel="icon" type="image/png" href="%BASE_URL%favicon.png" />
@@ -11,6 +11,10 @@
     <link rel="apple-touch-icon" href="%BASE_URL%favicon.png" />
     <title>RAR Consultant | All IT Solutions Under One Roof</title>
     <script>
+      try {
+        const p = new URLSearchParams(window.location.search).get('theme') || localStorage.getItem('rar_theme') || 'cyan';
+        document.documentElement.setAttribute('data-theme', p);
+      } catch {}
       (() => {
         const url = new URL(window.location.href);
         const requested = url.searchParams.get('p');

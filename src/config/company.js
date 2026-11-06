@@ -6,7 +6,7 @@ export const company = {
   description: 'Practical digital services for ambitious small and local businesses across India.',
   phone: '+91 9158030333',
   phoneDisplay: '+91 91580 30333',
-  email: 'dumbresanskar23@gmail.com',
+  email: 'darekarkalyani11@gmail.com',
   whatsappUrl:
     'https://wa.me/919158030333?text=Hello%20RAR%20Consultant%2C%20I%20would%20like%20to%20enquire%20about%20your%20services.',
   country: 'India',
@@ -16,7 +16,7 @@ export const company = {
   locationDisplay: '[City, State, India]',
   workingHours: '[Add working days and hours]',
   grievanceOfficerName: '[Grievance Officer Name]',
-  grievanceOfficerEmail: 'dumbresanskar23@gmail.com',
+  grievanceOfficerEmail: 'darekarkalyani11@gmail.com',
   grievanceResponseTimeline: '[Insert response timeline]',
   dataRetention:
     'RAR Consultant retains enquiry details only for as long as needed to respond and manage a potential engagement, then ordinarily deletes them within 12 months of the last interaction unless a longer period is required by law or necessary to establish, exercise, or defend legal claims. A copy sent to Web3Forms is subject to its configured retention setting; the provider currently allows retention for up to three years by default, so its per-form retention must be configured to align with this policy before launch.',
