@@ -3,10 +3,12 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { HelmetProvider } from 'react-helmet-async';
 import { Link, useLocation, useOutlet } from 'react-router-dom';
 import { CookieConsentProvider } from '../hooks/CookieConsent.jsx';
+import { ThemeProvider } from '../context/ThemeContext.jsx';
 import Navbar from './Navbar.jsx';
 import Footer from './Footer.jsx';
 import FloatingContactActions from './FloatingContactActions.jsx';
 import CookieBanner from './CookieBanner.jsx';
+import ThemeSwitcher from './ThemeSwitcher.jsx';
 
 class AppErrorBoundary extends Component {
   state = { failed: false };
@@ -89,17 +91,20 @@ function AnimatedRoute() {
 
 export default function SiteLayout() {
   return (
-    <HelmetProvider>
-      <CookieConsentProvider>
-        <AppErrorBoundary>
-          <ScrollToTop />
-          <Navbar />
-          <AnimatedRoute />
-          <Footer />
-          <FloatingContactActions />
-          <CookieBanner />
-        </AppErrorBoundary>
-      </CookieConsentProvider>
-    </HelmetProvider>
+    <ThemeProvider>
+      <HelmetProvider>
+        <CookieConsentProvider>
+          <AppErrorBoundary>
+            <ScrollToTop />
+            <Navbar />
+            <AnimatedRoute />
+            <Footer />
+            <FloatingContactActions />
+            <CookieBanner />
+            <ThemeSwitcher />
+          </AppErrorBoundary>
+        </CookieConsentProvider>
+      </HelmetProvider>
+    </ThemeProvider>
   );
 }

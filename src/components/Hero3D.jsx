@@ -3,6 +3,7 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Float } from '@react-three/drei';
 import * as THREE from 'three';
 import { useReducedMotion } from 'framer-motion';
+import { useTheme } from '../context/ThemeContext.jsx';
 
 function fibonacciSphere(count, radius = 2.1) {
   const positions = new Float32Array(count * 3);
@@ -19,6 +20,17 @@ function fibonacciSphere(count, radius = 2.1) {
 }
 
 function NetworkGlobe({ mobile }) {
+  const { themeConfig } = useTheme();
+  const colors = themeConfig?.heroOrb || {
+    globe: '#0a2540',
+    wire: '#0284c7',
+    nodes: '#90e0ef',
+    ring: '#00f0ff',
+    ringOuter: '#0284c7',
+    light: '#00f0ff',
+    lightSecondary: '#38bdf8',
+  };
+
   const group = useRef();
   const orbit = useRef();
   const pointerTarget = useRef(new THREE.Vector3());
@@ -70,15 +82,15 @@ function NetworkGlobe({ mobile }) {
   return (
     <>
       <ambientLight intensity={0.65} />
-      <pointLight position={[4, 4, 5]} intensity={2.1} color="#7588ff" />
-      <pointLight position={[-4, -2, 3]} intensity={1.15} color="#ff3434" />
+      <pointLight position={[4, 4, 5]} intensity={2.1} color={colors.lightSecondary} />
+      <pointLight position={[-4, -2, 3]} intensity={1.3} color={colors.light} />
       <group ref={group}>
         <mesh>
           <icosahedronGeometry args={[1.48, 2]} />
           <meshPhysicalMaterial
-            color="#101a66"
-            emissive="#111b79"
-            emissiveIntensity={0.26}
+            color={colors.globe}
+            emissive={colors.globe}
+            emissiveIntensity={0.28}
             metalness={0.62}
             roughness={0.4}
             transparent
@@ -87,24 +99,24 @@ function NetworkGlobe({ mobile }) {
           />
         </mesh>
         <lineSegments geometry={lineGeometry}>
-          <lineBasicMaterial color="#4867ff" transparent opacity={0.34} />
+          <lineBasicMaterial color={colors.wire} transparent opacity={0.36} />
         </lineSegments>
         <points geometry={nodeGeometry} frustumCulled={false}>
-          <pointsMaterial color="#a3b1ff" size={0.045} sizeAttenuation transparent opacity={0.9} />
+          <pointsMaterial color={colors.nodes} size={0.045} sizeAttenuation transparent opacity={0.9} />
         </points>
         <Float speed={1.2} rotationIntensity={0.12} floatIntensity={0.12}>
           <mesh ref={orbit} rotation={[1.18, 0.2, -0.3]}>
-            <torusGeometry args={[2.28, 0.014, 10, 180]} />
-            <meshBasicMaterial color="#ff2a2a" transparent opacity={0.94} />
+            <torusGeometry args={[2.28, 0.016, 12, 180]} />
+            <meshBasicMaterial color={colors.ring} transparent opacity={0.96} />
           </mesh>
         </Float>
         <mesh rotation={[0.5, -0.2, 0.7]}>
-          <torusGeometry args={[2.42, 0.006, 8, 180]} />
-          <meshBasicMaterial color="#5470ff" transparent opacity={0.5} />
+          <torusGeometry args={[2.42, 0.008, 10, 180]} />
+          <meshBasicMaterial color={colors.ringOuter} transparent opacity={0.55} />
         </mesh>
       </group>
       <points geometry={ambientGeometry} frustumCulled={false}>
-        <pointsMaterial color="#a4b2ff" size={0.018} sizeAttenuation transparent opacity={0.55} />
+        <pointsMaterial color={colors.nodes} size={0.018} sizeAttenuation transparent opacity={0.55} />
       </points>
     </>
   );
