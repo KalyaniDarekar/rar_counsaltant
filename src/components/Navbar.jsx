@@ -38,6 +38,17 @@ export default function Navbar() {
 
   useEffect(() => setOpen(false), [location.pathname]);
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
   const links = (mobile = false) =>
     navLinks.map(({ label, to, end }) => (
       <NavLink
@@ -53,7 +64,7 @@ export default function Navbar() {
             {isActive && (
               <motion.span
                 className="nav-underline"
-                layoutId="active-nav"
+                layoutId={mobile ? undefined : 'active-nav'}
                 transition={{ type: 'spring', stiffness: 380, damping: 32 }}
               />
             )}
@@ -63,50 +74,61 @@ export default function Navbar() {
     ));
 
   return (
-    <header className={`site-header${scrolled ? ' site-header-scrolled' : ''}`}>
-      <div className="nav-shell page-container">
-        <BrandLogo onClick={() => setOpen(false)} />
-        <nav className="desktop-nav" aria-label="Main navigation">
-          {links()}
-        </nav>
-        <div className="nav-actions">
-          <Link to="/contact" className="button button-primary nav-quote">
-            Get a Free Quote <ArrowUpRight size={15} aria-hidden="true" />
-          </Link>
-          <button
-            className="mobile-menu-toggle"
-            type="button"
-            aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
-            aria-expanded={open}
-            aria-controls="mobile-navigation"
-            onClick={() => setOpen((value) => !value)}
-          >
-            {open ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
-      </div>
-      <AnimatePresence>
-        {open && (
-          <motion.nav
-            id="mobile-navigation"
-            className="mobile-nav"
-            aria-label="Mobile navigation"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-          >
-            {links(true)}
-            <Link
-              to="/contact"
-              className="button button-primary mobile-quote"
-              onClick={() => setOpen(false)}
-            >
-              Get a Free Quote <ArrowUpRight size={16} aria-hidden="true" />
+    <>
+      <header className={`site-header${scrolled ? ' site-header-scrolled' : ''}`}>
+        <div className="nav-shell page-container">
+          <BrandLogo onClick={() => setOpen(false)} />
+          <nav className="desktop-nav" aria-label="Main navigation">
+            {links()}
+          </nav>
+          <div className="nav-actions">
+            <Link to="/contact" className="button button-primary nav-quote">
+              Get a Free Quote <ArrowUpRight size={15} aria-hidden="true" />
             </Link>
-          </motion.nav>
-        )}
-      </AnimatePresence>
-    </header>
+            <button
+              className="mobile-menu-toggle"
+              type="button"
+              aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={open}
+              aria-controls="mobile-navigation"
+              onClick={() => setOpen((value) => !value)}
+            >
+              {open ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
+        </div>
+        <AnimatePresence>
+          {open && (
+            <motion.nav
+              id="mobile-navigation"
+              className="mobile-nav"
+              aria-label="Mobile navigation"
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="mobile-nav-links">
+                {links(true)}
+              </div>
+              <Link
+                to="/contact"
+                className="button button-primary mobile-quote"
+                onClick={() => setOpen(false)}
+              >
+                Get a Free Quote <ArrowUpRight size={16} aria-hidden="true" />
+              </Link>
+            </motion.nav>
+          )}
+        </AnimatePresence>
+      </header>
+      {open && (
+        <div
+          className="mobile-nav-backdrop"
+          aria-hidden="true"
+          onClick={() => setOpen(false)}
+        />
+      )}
+    </>
   );
 }
