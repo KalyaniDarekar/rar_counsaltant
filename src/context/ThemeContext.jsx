@@ -3,10 +3,11 @@ import { createContext, useContext, useEffect, useState } from 'react';
 export const THEMES = {
   cyan: {
     id: 'cyan',
-    name: 'Sapphire Cyan',
-    subtitle: 'Modern Cloud & AI',
+    name: 'Cyber Sapphire',
+    subtitle: 'Electric Cyan & Deep Tech Azure',
     accentColor: '#00D2FF',
     badgeColor: '#00F0FF',
+    isLight: false,
     heroOrb: {
       globe: '#0a2540',
       wire: '#0284c7',
@@ -17,28 +18,30 @@ export const THEMES = {
       lightSecondary: '#38bdf8',
     },
   },
-  crimson: {
-    id: 'crimson',
-    name: 'Tech Crimson',
-    subtitle: 'High-Impact Cyber',
-    accentColor: '#FF1A1A',
-    badgeColor: '#FF3B30',
+  violet: {
+    id: 'violet',
+    name: 'Royal Violet',
+    subtitle: 'Deep Obsidian Plum & Neon Purple',
+    accentColor: '#8B5CF6',
+    badgeColor: '#A78BFA',
+    isLight: false,
     heroOrb: {
-      globe: '#101a66',
-      wire: '#4867ff',
-      nodes: '#a3b1ff',
-      ring: '#ff2a2a',
-      ringOuter: '#5470ff',
-      light: '#ff3434',
-      lightSecondary: '#7588ff',
+      globe: '#1a103c',
+      wire: '#7c3aed',
+      nodes: '#ddd6fe',
+      ring: '#c084fc',
+      ringOuter: '#6366f1',
+      light: '#a855f7',
+      lightSecondary: '#818cf8',
     },
   },
   emerald: {
     id: 'emerald',
     name: 'Emerald Mint',
-    subtitle: 'Growth & Fintech',
+    subtitle: 'Growth & Fintech Neon',
     accentColor: '#10B981',
     badgeColor: '#34D399',
+    isLight: false,
     heroOrb: {
       globe: '#06261c',
       wire: '#059669',
@@ -49,20 +52,38 @@ export const THEMES = {
       lightSecondary: '#6ee7b7',
     },
   },
-  violet: {
-    id: 'violet',
-    name: 'Royal Violet',
-    subtitle: 'Creative Enterprise',
-    accentColor: '#8B5CF6',
-    badgeColor: '#A78BFA',
+  crimson: {
+    id: 'crimson',
+    name: 'Tech Crimson',
+    subtitle: 'Original Cyber Navy & Red',
+    accentColor: '#FF1A1A',
+    badgeColor: '#FF3B30',
+    isLight: false,
     heroOrb: {
-      globe: '#1a103c',
-      wire: '#7c3aed',
-      nodes: '#ddd6fe',
-      ring: '#c084fc',
-      ringOuter: '#6366f1',
-      light: '#a855f7',
-      lightSecondary: '#818cf8',
+      globe: '#101a66',
+      wire: '#4867ff',
+      nodes: '#a3b1ff',
+      ring: '#ff2a2a',
+      ringOuter: '#5470ff',
+      light: '#ff3434',
+      lightSecondary: '#7588ff',
+    },
+  },
+  light: {
+    id: 'light',
+    name: 'Executive Light',
+    subtitle: 'Crisp White & Slate Enterprise',
+    accentColor: '#2563EB',
+    badgeColor: '#1D4ED8',
+    isLight: true,
+    heroOrb: {
+      globe: '#dbeafe',
+      wire: '#2563eb',
+      nodes: '#1d4ed8',
+      ring: '#2563eb',
+      ringOuter: '#60a5fa',
+      light: '#3b82f6',
+      lightSecondary: '#6366f1',
     },
   },
 };
@@ -80,20 +101,19 @@ export function ThemeProvider({ children }) {
       const urlParams = new URLSearchParams(window.location.search);
       const urlTheme = urlParams.get('theme');
       if (urlTheme && THEMES[urlTheme]) return urlTheme;
-      const saved = localStorage.getItem('rar_theme');
+      const saved = localStorage.getItem('rar_theme_v2');
       if (saved && THEMES[saved]) return saved;
     } catch {
       // ignore
     }
-    return 'cyan'; // Default theme is now Cyan & Sapphire (Option 2)
+    return 'cyan'; // Default theme: Cyber Sapphire & Electric Cyan
   });
 
   const setTheme = (newTheme) => {
     if (!THEMES[newTheme]) return;
     setThemeState(newTheme);
     try {
-      localStorage.setItem('rar_theme', newTheme);
-      // Optional: keep URL param in sync if present
+      localStorage.setItem('rar_theme_v2', newTheme);
       const url = new URL(window.location.href);
       if (url.searchParams.has('theme')) {
         url.searchParams.set('theme', newTheme);
@@ -121,4 +141,3 @@ export function ThemeProvider({ children }) {
 export function useTheme() {
   return useContext(ThemeContext);
 }
-
