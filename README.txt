@@ -1,0 +1,1 @@
+RAR Consultant redesigned static site. Upload all files to any web host. Open index.html to preview. Contact form opens the visitor's email app (mailto); connect a PHP/mail backend for server-side sending.
